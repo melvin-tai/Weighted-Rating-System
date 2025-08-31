@@ -34,10 +34,18 @@ This project evaluates advanced weighted rating algorithms (i.e. Bayesian Averag
 
 ---
 
+**Affiliated Data Visualization Tools:**
+- Constructed a **histogram** and **boxplot** to visualize before and after data cleaning.
+- Constructed **pairwise plots** and **scatter plots with K-Means clustering** for each dataset to visualize the correlation between "Rated" and "Votes".
+- Constructed a **rate of growth graph** to visualize the rate of growth of each weighted rating algorithm.
+- Constructed **histograms with normal distribution** and **overlay histograms** for each dataset to visualize the score distribution of each weighted rating algorithm.
+
+---
+
 **Affiliated Datasets:**
-- **"df_books"** is a 1,071 row, 15 column (158 KB) dataset titled "Books Sales and Ratings", authored by The Devastator and acquired via Kaggle. From my (Melvin's) selection of three datasets, "df_books" served as the small, simple, and fundamental dataset that was used for 'confirming' purposes. Every task had to pass this dataset before moving on to the next two. It was also the easiest and more dependable one to handle, and due to its small size, working on data visualization did not take me as long as I had expected.
-- **"df_games"** is a 16,720 row, 16 column (1.54 MB) dataset titled "Global Video Game Sales & Ratings" (Raw Data.csv), authored by The Devastator and acquired via Kaggle. From my (Melvin's) selection of three datasets, "df_games" serves as the 'showcase' dataset - showcasing my findings and my use of techniques. As we are using the raw data document, there is a need for more in-depth data cleaning than other datasets, and as this dataset is also slightly larger than the "df_books", it is used to display our findings.
-- **"df_reviews"** is a 413,841 row, 6 column (125 MB) dataset titled "Amazon Reviews: Unlocked Mobile Phones", authored by PromptCloud and acquired via Kaggle. Unlike the others, this dataset refers to customer reviews after the purchase of some phone product on Amazon (and not product ratings). "Rated" refers to the customers' appraisal, while "Votes" refer to ratings of the appraisal, i.e. people who may or may not have purchased the same product, but found the customers' ratings to be truthful. From my (Melvin's) selection of three datasets, "df_reviews" serves as the 'verification' dataset, proving that this project can be integrated to larger datasets of completely different uses.
+- **"df_books"** is a 1,071 row, 15 column (158 KB) dataset titled "Books Sales and Ratings", authored by The Devastator and acquired via Kaggle. From my selection of three datasets, "df_books" served as the small, simple, and fundamental dataset that was used for 'confirming' purposes. Every task had to pass this dataset before moving on to the next two. It was also the easiest and more dependable one to handle, and due to its small size, working on data visualization did not take me as long as I had expected.
+- **"df_games"** is a 16,720 row, 16 column (1.54 MB) dataset titled "Global Video Game Sales & Ratings" (Raw Data.csv), authored by The Devastator and acquired via Kaggle. From my selection of three datasets, "df_games" serves as the 'showcase' dataset - showcasing my findings and my use of techniques. As we are using the raw data document, there is a need for more in-depth data cleaning than other datasets, and as this dataset is also slightly larger than the "df_books", it is used to display our findings.
+- **"df_reviews"** is a 413,841 row, 6 column (125 MB) dataset titled "Amazon Reviews: Unlocked Mobile Phones", authored by PromptCloud and acquired via Kaggle. Unlike the others, this dataset refers to customer reviews after the purchase of some phone product on Amazon (and not product ratings). "Rated" refers to the customers' appraisal, while "Votes" refer to ratings of the appraisal, i.e. people who may or may not have purchased the same product, but found the customers' ratings to be truthful. From my selection of three datasets, "df_reviews" serves as the 'verification' dataset, proving that this project can be integrated to larger datasets of completely different uses.
 
 ---
 
