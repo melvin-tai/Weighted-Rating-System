@@ -14,6 +14,9 @@ We call these rating systems *naive*. These naive rating systems rank products s
 **Project Description:**  
 This project evaluates advanced weighted rating algorithms (i.e. Bayesian Average, Wilson Score Intervals, Bradley–Terry–Luce Model, and Dirichlet–Multinomial Model) to correct small-sample bias in average-based rating systems.
 
+    Investigation Methodology: "Weighted Rating System and Statistical Modelling - Addressing Small-Sample Bias.ipynb".
+    Investigation Cutcome: "10,000_Movies_ReRanked_WRS.csv".
+
 ---
 
 **Project Tools Selection:**  
