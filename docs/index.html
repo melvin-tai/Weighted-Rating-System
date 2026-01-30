@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weighted Ranking Engine</title>
+  <title>Weighted Ranking System</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css" />
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
@@ -16,8 +18,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Weighted Ranking Engine</h1>
-      <p class="subtitle">Upload a CSV, apply a statistically robust ranking, and export the result — entirely client-side.</p>
+      <h1>Weighted Ranking System</h1>
+      <p class="subtitle">Upload a CSV, apply the weighted ranking algorithm, and export the result!</p>
     </header>
 
     <section class="panel">
@@ -27,18 +29,18 @@
       </label>
 
       <div class="preview" id="preview">
-        <h3>File preview</h3>
+        <h3>File Preview:</h3>
         <pre id="previewContent"></pre>
       </div>
 
       <div class="actions">
         <button id="rankBtn" disabled>Rank</button>
-        <a class="secondary" href="viewer.html">View weighted dataset →</a>
-        <span class="status" id="status">Waiting for file…</span>
+        <a class="secondary" href="viewer.html">View Exemplary Weighted Dataset →</a>
+        <span class="status" id="status">Waiting for File…</span>
       </div>
     </section>
 
-    <footer>Client-side processing • No data leaves your browser</footer>
+    <footer>Client-Side Processing - Data Security Assurance</footer>
   </div>
 
   <script src="app.js"></script>
