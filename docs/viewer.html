@@ -3,28 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ranked Dataset Viewer</title>
+  <title>Weighted-Ranked Dataset Viewer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Weighted Dataset</h1>
-      <p class="subtitle">Inspect a pre-ranked dataset generated using robust weighting.</p>
+      <h1>Exemplary Weighted Dataset</h1>
+      <p class="subtitle">Preview of a pre-ranked dataset generated using the weighted ranking engine.</p>
     </header>
 
     <section class="panel">
-      <p class="muted">This page is intentionally minimal. Plug in any precomputed CSV and extend with filters or comparisons.</p>
+      <table id="dataTable">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
     </section>
 
     <footer>
       <a class="secondary" href="index.html">← Back to uploader</a>
     </footer>
   </div>
+
+  <script>
+    fetch('../data/weighted/weighted_example.csv')
+      .then(res => res.text())
+      .then(csv => {
+        const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+        const data = parsed.data.slice(0, 20);
+
+        const table = document.getElementById('dataTable');
+        const thead = table.querySelector('thead');
+        const tbody = table.querySelector('tbody');
+
+        const headers = Object.keys(data[0]);
+        thead.innerHTML = '<tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr>';
+
+        tbody.innerHTML = data.map(row =>
+          '<tr>' + headers.map(h => `<td>${row[h]}</td>`).join('') + '</tr>'
+        ).join('');
+      });
+  </script>
 </body>
 </html>
