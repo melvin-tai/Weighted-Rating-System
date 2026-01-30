@@ -1,0 +1,112 @@
+:root {
+  --bg: #0b0d10;
+  --panel: #12151c;
+  --text: #e6e8eb;
+  --muted: #9aa0aa;
+  --accent: #5ddcff;
+  --accent-2: #c77dff;
+  --border: rgba(255,255,255,0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(93,220,255,0.15), transparent),
+              radial-gradient(1200px 600px at 90% 10%, rgba(199,125,255,0.12), transparent),
+              var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 980px;
+  padding: 48px 32px;
+}
+
+header { margin-bottom: 36px; }
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.subtitle { color: var(--muted); max-width: 720px; }
+
+.panel {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+  animation: fadeUp 0.6s ease-out both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.upload {
+  display: block;
+  border: 2px dashed var(--border);
+  border-radius: 14px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.upload:hover {
+  border-color: var(--accent);
+  background: rgba(93,220,255,0.04);
+}
+
+input[type=file] { display: none; }
+
+.preview { display: none; margin-top: 28px; }
+
+pre {
+  background: #0e1117;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  max-height: 220px;
+  overflow: auto;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+}
+
+.actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+button {
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #0b0d10;
+  cursor: pointer;
+}
+
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.secondary {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.status, .muted, footer { color: var(--muted); font-size: 0.9rem; }
+
+footer { margin-top: 48px; }
