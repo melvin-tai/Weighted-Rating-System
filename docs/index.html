@@ -1,122 +1,52 @@
+<!-- ==========================
+FILE: /docs/index.html
+========================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weighted Rating System – Demo</title>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-  <style>
-    body { font-family: system-ui, -apple-system, sans-serif; margin: 40px; background: #fafafa; color: #111; }
-    h1 { font-size: 2.2rem; }
-    h2 { margin-top: 2rem; }
-    p { max-width: 900px; line-height: 1.6; }
-    .controls { margin: 20px 0; display: flex; gap: 16px; flex-wrap: wrap; }
-    select, input { padding: 6px 10px; font-size: 0.9rem; }
-    table { border-collapse: collapse; margin-top: 20px; width: 100%; }
-    th, td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; }
-    th { cursor: pointer; background: #f0f0f0; }
-    tr:hover { background: #f9f9f9; }
-    .note { font-size: 0.9rem; color: #444; }
-  </style>
+  <title>Weighted Ranking Engine</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PapaParse -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>Weighted Ranking Engine</h1>
+      <p class="subtitle">Upload a CSV, apply a statistically robust ranking, and export the result — entirely client-side.</p>
+    </header>
 
-<h1>Weighted Rating System (WRS)</h1>
-<p>
-This frontend is a lightweight, static visualization layer for the <b>Weighted Rating System</b> project.
-It demonstrates how different ranking algorithms (Bayesian Average, Wilson Score, BTL, Dirichlet–Multinomial)
-change ordering when vote counts are sparse.
-</p>
+    <section class="panel">
+      <label class="upload">
+        <input type="file" id="fileInput" accept=".csv" />
+        <span>Click to upload a <strong>.csv</strong> file</span>
+      </label>
 
-<h2>Dataset Explorer</h2>
-<div class="controls">
-  <label>
-    Sort by:
-    <select id="sortMetric">
-      <option value="Rated">Raw Rating</option>
-      <option value="Votes">Votes</option>
-      <option value="Bayesian_Score">Bayesian</option>
-      <option value="Wilson_Score">Wilson</option>
-      <option value="BTL_Score">BTL</option>
-      <option value="DM_Score">Dirichlet-Multinomial</option>
-    </select>
-  </label>
+      <div class="preview" id="preview">
+        <h3>File preview</h3>
+        <pre id="previewContent"></pre>
+      </div>
 
-  <label>
-    Minimum votes:
-    <input id="minVotes" type="number" value="0" min="0" />
-  </label>
-</div>
+      <div class="actions">
+        <button id="rankBtn" disabled>Rank</button>
+        <a class="secondary" href="viewer.html">View weighted dataset →</a>
+        <span class="status" id="status">Waiting for file…</span>
+      </div>
+    </section>
 
-<table id="dataTable">
-  <thead>
-    <tr>
-      <th>Identifier</th>
-      <th>Rated</th>
-      <th>Votes</th>
-      <th>Bayesian</th>
-      <th>Wilson</th>
-      <th>BTL</th>
-      <th>DM</th>
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>
+    <footer>Client-side processing • No data leaves your browser</footer>
+  </div>
 
-<p class="note">
-Data source: <code>data/weighted/10,000_Movies_ReRanked_WRS.csv</code>. This page is designed to be hosted via GitHub Pages.
-</p>
-
-<script>
-const csvPath = "../data/weighted/10,000_Movies_ReRanked_WRS.csv";
-
-let fullData = [];
-
-function renderTable(data) {
-  const tbody = d3.select("#dataTable tbody");
-  tbody.selectAll("tr").remove();
-
-  const rows = tbody.selectAll("tr")
-    .data(data.slice(0, 100)) // limit rows for performance
-    .enter()
-    .append("tr");
-
-  rows.selectAll("td")
-    .data(d => [
-      d.Identifier,
-      d.Rated,
-      d.Votes,
-      d.Bayesian_Score,
-      d.Wilson_Score,
-      d.BTL_Score,
-      d.DM_Score
-    ])
-    .enter()
-    .append("td")
-    .text(d => typeof d === "number" ? d.toFixed(3) : d);
-}
-
-function updateView() {
-  const metric = document.getElementById("sortMetric").value;
-  const minVotes = +document.getElementById("minVotes").value;
-
-  const filtered = fullData
-    .filter(d => d.Votes >= minVotes)
-    .sort((a, b) => b[metric] - a[metric]);
-
-  renderTable(filtered);
-}
-
-// Load CSV
-d3.csv(csvPath, d3.autoType).then(data => {
-  fullData = data;
-  updateView();
-});
-
-// Event listeners
-document.getElementById("sortMetric").addEventListener("change", updateView);
-document.getElementById("minVotes").addEventListener("input", updateView);
-</script>
-
+  <script src="app.js"></script>
 </body>
-</
+</html>
